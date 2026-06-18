@@ -1,6 +1,15 @@
-import { Controller, Get, Post, Delete, Param, Body, HttpStatus, HttpCode } from '@nestjs/common'
+import {
+  Controller,
+  Get,
+  Post,
+  Delete,
+  Param,
+  Body,
+  HttpStatus,
+  HttpCode
+} from '@nestjs/common'
 import { JobsService } from './jobs.service'
-import { CreateJobsBodyDto } from "./dto/create-jobs.body.dto"
+import { CreateJobsBodyDto } from './dto/create-jobs.body.dto'
 
 // Тут можно поставить рейт лимит на путь /jobs
 // @Throttle({ default: { limit: 60, ttl: 60000 } })

@@ -8,8 +8,7 @@ import { JobsModule } from './jobs/jobs.module'
     HealthModule,
 
     // Domains
-    JobsModule,
-  ],
+    JobsModule
+  ]
 })
-
 export class AppModule {}
