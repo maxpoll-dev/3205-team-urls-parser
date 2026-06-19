@@ -1,0 +1,25 @@
+{
+  "name": "url-checker",
+  "private": true,
+  "scripts": {
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "frontend/**/*.{ts,vue}": [
+      "frontend/node_modules/.bin/eslint --fix --config frontend/eslint.config.ts",
+      "prettier --write"
+    ],
+    "backend/**/*.ts": [
+      "backend/node_modules/.bin/eslint --fix --config backend/eslint.config.mjs",
+      "prettier --write"
+    ],
+    "**/*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.7",
+    "prettier": "^3.8.4"
+  }
+}
