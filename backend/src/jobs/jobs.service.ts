@@ -11,6 +11,7 @@ import { CreateJobsBodyDto } from './dto/create-jobs.body.dto'
 import {
   type Job,
   type JobView,
+  type JobListView,
   type Stats,
   type UrlResult,
   JobStatus,
@@ -25,9 +26,9 @@ export class JobsService {
   ) {}
 
   // async добавил намеренно что бы прокидывать промисы с репозитория и приблизить поведение к DB | ORM
-  async getList(): Promise<JobView[]> {
+  async getList(): Promise<JobListView[]> {
     const jobs = await this.repository.getList()
-    return jobs.map((job) => this.toView(job))
+    return jobs.map((job) => this.toListView(job))
   }
 
   async getById(id: string): Promise<JobView> {
@@ -67,6 +68,11 @@ export class JobsService {
 
   private toView(job: Job): JobView {
     return { ...job, stats: this.buildStats(job.urls) }
+  }
+
+  private toListView(job: Job): JobListView {
+    const { urls, ...rest } = job
+    return { ...rest, stats: this.buildStats(urls) }
   }
 
   private buildStats(urls: UrlResult[]): Stats {

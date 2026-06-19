@@ -45,3 +45,5 @@ export interface Job {
 export interface JobView extends Job {
   stats: Stats
 }
+
+export type JobListView = Omit<JobView, 'urls'>

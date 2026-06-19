@@ -28,11 +28,13 @@ export class JobsRepository {
 
   async updateUrl(
     id: string,
-    url: string,
+    index: number,
     params: Partial<UrlResult>
   ): Promise<void> {
     const job = this.jobs.get(id) as Job
-    const urls = job.urls.map((i) => (i.url === url ? { ...i, ...params } : i))
+    const urls = job.urls.map((item, i) =>
+      i === index ? { ...item, ...params } : item
+    )
 
     this.jobs.set(id, { ...job, urls })
   }
