@@ -3,9 +3,9 @@
 Нужен только Docker + Docker Compose.
 
 ```bash
-make up        # поднять (docker compose up -d)
+make up        # поднять
 make rebuild   # пересобрать образы и поднять
-make down      # остановить и очистить (включая volume со статикой)
+make down      # остановить и очистить
 ```
 
 URL: **http://localhost:3000**
