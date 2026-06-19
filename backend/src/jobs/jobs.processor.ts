@@ -75,7 +75,9 @@ export class JobsProcessor {
     limit: number
   ): Promise<void> {
     // Нарезать на 5 элементов и отдавать в Promise.all не подходит для этой задачи. all будет ждать самый последний промис.
-    // В проде использовал бы готовое решение по типу p-limit,
+    // Тут если честно пользовался Клодом,
+    // но ИИ предлагала вынести функции runPool и sleep в утилиты, а так же сделать дополнительный параметр worker в runPool.
+    // Для тест задачи решил просто передавать айди джобы в runPool и прокидывать в checkUrl
     const queue = [...urls]
     const workers = Array.from(
       { length: Math.min(limit, queue.length) },
@@ -87,6 +89,7 @@ export class JobsProcessor {
       }
     )
 
+    // В проде использовал бы готовое решение по типу p-limit
     await Promise.all(workers)
   }
 
